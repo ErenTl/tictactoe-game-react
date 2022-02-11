@@ -23,6 +23,9 @@ class Board extends React.Component {
         if (calculateWinner(squares) != null) {
             return;
         }
+        if (squares[i] != null) {
+            return;
+        }
         squares[i] = this.state.xIsNext ? "X" : "O";
         this.setState({
             squares: squares,
@@ -40,11 +43,16 @@ class Board extends React.Component {
 
     render() {
         const winner = calculateWinner(this.state.squares);
+        const draw = calculateDraw(this.state.squares);
         let status;
         if (winner != null) {
             status = "Winner " + winner;
         } else {
-            status = 'Next player: ' + (this.state.xIsNext ? "X" : "O");
+            if (draw) {
+                status = "Draw";
+            } else {
+                status = 'Next player: ' + (this.state.xIsNext ? "X" : "O");
+            }
         }
 
         return (
@@ -118,4 +126,15 @@ function calculateWinner(squares) {
     }
     console.log("returned null");
     return null;
+}
+
+function calculateDraw(squares) {
+    for (let i = 0; i < 9; i++) {
+        if (squares[i] == null) {
+            console.log("not draw");
+            return false;
+        }
+    }
+    console.log("draw");
+    return true;
 }
