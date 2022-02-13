@@ -8,6 +8,8 @@ In the project directory, you can run:
 
 ### `npm start`
 
+(IF YOU GET "Fixing 'react-scripts' is not recognized" ERROR TRY "npm install" FIRST)
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
